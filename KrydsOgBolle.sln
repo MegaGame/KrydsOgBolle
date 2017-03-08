@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBClient", "KBClient\KBClient.csproj", "{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBServer", "KBServer\KBServer.csproj", "{27089EFC-05CF-4846-B380-1908B7D76A17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBOneScreen", "KBOneScreen\KBOneScreen.csproj", "{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27089EFC-05CF-4846-B380-1908B7D76A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27089EFC-05CF-4846-B380-1908B7D76A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27089EFC-05CF-4846-B380-1908B7D76A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27089EFC-05CF-4846-B380-1908B7D76A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

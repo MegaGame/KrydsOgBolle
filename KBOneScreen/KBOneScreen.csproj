@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}</ProjectGuid>
+    <ProjectGuid>{4D62D6FE-B5F7-496C-B4BB-5369AAD9F2AD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KBClient</RootNamespace>
-    <AssemblyName>KBClient</AssemblyName>
+    <RootNamespace>KBOneScreen</RootNamespace>
+    <AssemblyName>KBOneScreen</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientView.cs">
+    <Compile Include="KBOSView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientView.Designer.cs">
-      <DependentUpon>ClientView.cs</DependentUpon>
+    <Compile Include="KBOSView.Designer.cs">
+      <DependentUpon>KBOSView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientProgram.cs" />
+    <Compile Include="KBOSProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ClientView.resx">
-      <DependentUpon>ClientView.cs</DependentUpon>
+    <EmbeddedResource Include="KBOSView.resx">
+      <DependentUpon>KBOSView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

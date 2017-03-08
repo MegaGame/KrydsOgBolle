@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A1C42EA-A977-4AA1-B26B-591B9AB1E742}</ProjectGuid>
+    <ProjectGuid>{27089EFC-05CF-4846-B380-1908B7D76A17}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KBClient</RootNamespace>
-    <AssemblyName>KBClient</AssemblyName>
+    <RootNamespace>KBServer</RootNamespace>
+    <AssemblyName>KBServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,17 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientView.cs">
+    <Compile Include="ServerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientView.Designer.cs">
-      <DependentUpon>ClientView.cs</DependentUpon>
+    <Compile Include="ServerView.Designer.cs">
+      <DependentUpon>ServerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientProgram.cs" />
+    <Compile Include="ServerProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ClientView.resx">
-      <DependentUpon>ClientView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,6 +63,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServerView.resx">
+      <DependentUpon>ServerView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
