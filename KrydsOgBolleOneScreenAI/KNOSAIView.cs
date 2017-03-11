@@ -57,7 +57,11 @@ namespace KrydsOgBolleOneScreenAI
         {
             if (gameOver == false)
             {
-                if (currentPlayer == "X")
+                if (numbersOfX == 5)
+                {
+                    textBoxPlayer.Text = "Spillet er slut, ingen vandt";
+                }
+                else if (currentPlayer == "X")
                 {
                     currentPlayer = "O";
                     textBoxPlayer.Text = "Spiller O har tur";
@@ -70,7 +74,7 @@ namespace KrydsOgBolleOneScreenAI
                 }
             }
         }
-        private string MakeAMove(int place)
+        private string MakeAMovePlayer(int place)
         {
             if (gameOver == false)
             {
@@ -85,9 +89,24 @@ namespace KrydsOgBolleOneScreenAI
                         return "X";
                     }                    
                     return "ERROR";
-                }                
+                }
+                return "ERROR";
             }
             return "ERROR";
+        }
+        private void MakeAMoveAI(int place)
+        {
+            if (currentPlayer == "O")
+            {
+                if (board[place] == null)
+                {
+                    numbersOfO++;
+                    board[place] = "O";
+                    TestForWin();
+                    ChangePic(place);
+                    ChangeCurrentPlayer();
+                }
+            }
         }
         private void TestForWin()
         {
@@ -138,54 +157,694 @@ namespace KrydsOgBolleOneScreenAI
             }
            
         }
+        private void ChangePic(int i)
+        {
+            if (i == 0)
+            {
+               pictureBox1.Image = Opic;
+            }
+            else if (i == 1)
+            {
+                pictureBox2.Image = Opic;
+            }
+            else if (i == 2)
+            {
+                pictureBox3.Image = Opic;
+            }
+            else if (i == 3)
+            {
+                pictureBox4.Image = Opic;
+            }
+            else if (i == 4)
+            {
+                pictureBox5.Image = Opic;
+            }
+            else if (i == 5)
+            {
+                pictureBox6.Image = Opic;
+            }
+            else if (i == 6)
+            {
+                pictureBox7.Image = Opic;
+            }
+            else if (i == 7)
+            {
+                pictureBox8.Image = Opic;
+            }
+            else if (i == 8)
+            {
+                pictureBox9.Image = Opic;
+            }
+        }
         private void AIMove()
         {
-            ChangeCurrentPlayer();
+            if (numbersOfX == 1)
+            {
+                if (board[4] == "X")
+                {
+                    int[] ia = new int[4];
+                    ia[0] = 0;
+                    ia[1] = 2;
+                    ia[2] = 6;
+                    ia[3] = 8;
+                    Random rng = new Random();
+                    MakeAMoveAI(ia[rng.Next(0, 4)]);                    
+                }
+                else if (board[4] != "X")
+                {
+                    MakeAMoveAI(4);
+                }
+                else
+                {
+                    AIStandartMove();
+                }
+
+            }
+            else if (numbersOfX >= 2)
+            {
+                int OCount = 0;
+                int XCount = 0;
+                Boolean moveMade = false;
+                if (!moveMade)
+                {
+                    if (board[0] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[1] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[2] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[0] == "X" || board[1] == "X" || board[2] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[3] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[4] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[5] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[3] == "X" || board[4] == "X" || board[5] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 3; i < 6; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[6] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[7] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[6] == "X" || board[7] == "X" || board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 7; i < 9; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[0] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[3] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[6] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[0] == "X" || board[3] == "X" || board[6] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 0; i < 7; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[1] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[4] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[7] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[1] == "X" || board[4] == "X" || board[7] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 1; i < 8; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[2] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[5] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[2] == "X" || board[5] == "X" || board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 2; i < 9; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[0] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[4] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[0] == "X" || board[4] == "X" || board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 0; i < 9; i += 4)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[2] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[4] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[6] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (board[0] == "X" || board[4] == "X" || board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (OCount == 2 && XCount == 0)
+                    {
+                        for (int i = 2; i < 7; i += 2)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+
+
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[0] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[1] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[2] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[0] == "O" || board[1] == "O" || board[2] == "O")
+                    {                        
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[3] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[4] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[5] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[3] == "O" || board[4] == "O" || board[5] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 3; i < 6; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[6] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[7] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[6] == "O" || board[7] == "O" || board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 7; i < 9; i++)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[0] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[3] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[6] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[0] == "O" || board[3] == "O" || board[6] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 0; i < 7; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[1] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[4] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[7] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[1] == "O" || board[4] == "O" || board[7] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 1; i < 8; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[2] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[5] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[2] == "O" || board[5] == "O" || board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 2; i < 9; i += 3)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[0] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[4] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[8] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[0] == "O" || board[4] == "O" || board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 0; i < 9; i += 4)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    OCount = 0;
+                    XCount = 0;
+                    if (board[2] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[4] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[6] == "X")
+                    {
+                        XCount++;
+                    }
+                    if (board[0] == "O" || board[4] == "O" || board[8] == "O")
+                    {
+                        OCount++;
+                    }
+                    if (XCount == 2 && OCount == 0)
+                    {
+                        for (int i = 2; i < 7; i += 2)
+                        {
+                            if (board[i] == null)
+                            {
+                                MakeAMoveAI(i);
+                                moveMade = true;
+                            }
+                        }
+                    }
+                }
+                if (!moveMade)
+                {
+                    AIStandartMove();
+                }                
+            }
+            else
+            {
+                AIStandartMove();
+            }
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(0);
+            if (s == "X")
+            {
+                pictureBox1.Image = Xpic;
+            }
+        }
+        private void AIStandartMove()
+        {
+            List<int> placeOfNull = new List<int>();
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (board[i] == null)
+                {
+                    placeOfNull.Add(i);
+                }
+            }
+            Random rng = new Random();
+            MakeAMoveAI(placeOfNull[rng.Next(0, placeOfNull.Count)]);
         }
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(1);
+            if (s == "X")
+            {
+                pictureBox2.Image = Xpic;
+            }
         }
 
         private void pictureBox3_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(2);
+            if (s == "X")
+            {
+                pictureBox3.Image = Xpic;
+            }
         }
 
         private void pictureBox4_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(3);
+            if (s == "X")
+            {
+                pictureBox4.Image = Xpic;
+            }
         }
 
         private void pictureBox5_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(4);
+            if (s == "X")
+            {
+                pictureBox5.Image = Xpic;
+            }
         }
 
         private void pictureBox6_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(5);
+            if (s == "X")
+            {
+                pictureBox6.Image = Xpic;
+            }
         }
 
         private void pictureBox7_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(6);
+            if (s == "X")
+            {
+                pictureBox7.Image = Xpic;
+            }
         }
 
         private void pictureBox8_MouseClick(object sender, MouseEventArgs e)
         {
-
+            string s = MakeAMovePlayer(7);
+            if (s == "X")
+            {
+                pictureBox8.Image = Xpic;
+            }
         }
 
         private void pictureBox9_MouseClick(object sender, MouseEventArgs e)
         {
+            string s = MakeAMovePlayer(8);
+            if (s == "X")
+            {
+                pictureBox9.Image = Xpic;
+            }
+        }
 
+        private void NewGameButton_Click(object sender, EventArgs e)
+        {
+            NewGame();
         }
     }
 }

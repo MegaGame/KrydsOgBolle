@@ -177,6 +177,7 @@
             this.NewGameButton.TabIndex = 2;
             this.NewGameButton.Text = "Nyt spil";
             this.NewGameButton.UseVisualStyleBackColor = true;
+            this.NewGameButton.Click += new System.EventHandler(this.NewGameButton_Click);
             // 
             // KNOSAIView
             // 
